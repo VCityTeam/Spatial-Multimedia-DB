@@ -17,7 +17,7 @@ user=postgres
 password=password
 host=postgres
 port=5432
-dbname=extendedDoc
+dbname=extendeddoc
 ````
 
 > *Note: the .env that is commited should not be modified because it is used by travis for CI.*  
