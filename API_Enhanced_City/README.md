@@ -4,7 +4,7 @@
 
 The goal of the API **Enhanced City** is to handle, and serve through 
 [web services](https://en.wikipedia.org/wiki/Web_service), various types
-of city related in the context of 
+of city related data in the context of 
 [UD-SV (Urban Data Services and Vizualisation)](https://github.com/VCityTeam/UD-SV).
 
 The API currently offers [web service](https://en.wikipedia.org/wiki/Web_service) 
