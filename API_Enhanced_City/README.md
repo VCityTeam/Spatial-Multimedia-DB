@@ -2,16 +2,22 @@
 
 ## Introduction
 
-The goal of the API **Enhanced City** is to handle various types of data that are part of the city, in the context of UDV. For the moment, the API handles a few types of resources :
+The goal of the API **Enhanced City** is to handle, and serve through 
+[web services](https://en.wikipedia.org/wiki/Web_service), various types
+of city related in the context of 
+[UD-SV (Urban Data Services and Vizualisation)](https://github.com/VCityTeam/UD-SV).
 
+The API currently offers [web service](https://en.wikipedia.org/wiki/Web_service) 
+access to few following types of resources :
 - Documents (file and metadata)
-- Guided tours (squences of documents with additional texts)
+- Guided tours (sequences of documents with additional texts)
+- Links between documents and other (city) objects
 - User accounts and rights
-- Links between documents and other objects
 
-These resources are used in the front-end of [UDV](https://github.com/MEPP-team/UDV).
+Such resources are typically used by the front-end [UD-Viz web client](https://github.com/VCityTeam/UD-Viz/).
 
-The application achieves all the [CRUD operations](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) on the backend side.
+Thus application provides all the expected 
+[CRUD operations](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) on the backend side.
 API Enhanced City is developed in python and is based on an **MVC** (Model, View, Controller) architecture.
 Persistance of objects to the DataBase is obtained through the usage of the [sqlalchemy library](https://www.sqlalchemy.org) [**ORM**](https://en.wikipedia.org/wiki/Object-relational_mapping).
 In order to wrap the (CRUD) service within an HTTP protocol (to deal with the requests and send responses to the client), the API uses the [flask library](http://flask.pocoo.org/docs/1.0/).
