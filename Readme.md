@@ -26,3 +26,12 @@ The [ExtractCityData tool](ExtractCityData) allows to process a
 database in order to create a materialized view of buildings (encountered in
 the database) constituted by their building id, their geometry and optionnally
 their year of construction and year of demolition.
+
+### CityGML utils
+Some modest helpers, working at the CityGML (version 2.0) file level like: 
+ - [CityGML2Stripper](Utils/CityGML2Stripper/) strips a CityGML (XML)file from
+   its "appearences" and generic attributes and serializes the result back
+   into a new CityGML (XML) file.
+ - [CityGMLBuildingBlender](Utils/CityGMLBuildingBlender/) takes a set 
+   of CityGML input files, collects all their buildings and gathers them
+   within a single CityGML resulting file.
