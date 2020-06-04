@@ -1,12 +1,13 @@
 ### Introduction
 
-This tool allows to process a
-[3DCityDB](https://www.3dcitydb.org/3dcitydb/3dcitydbhomepage/) database to create
-a materialized view on buildings of the database containing their id, their geometry
+The ExtractCityData tool allows to process a
+[3DCityDB](https://www.3dcitydb.org/3dcitydb/3dcitydbhomepage/) 
+database in order to create a materialized view of buildings
+(encountered in the database) constituted by their id, their geometry
 and optionnally their year of construction and year of demolition.
 
 ### Installation
-Refer to []()
+Refer to [Install.md installation instructions](Install.md)
 
 ### Usage
 
