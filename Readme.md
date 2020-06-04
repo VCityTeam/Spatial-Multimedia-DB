@@ -1,20 +1,24 @@
 # UD-Serv
 
 UD-Serv is a collection of server-side tools for converting and analysing urban data.
-The client-side component can be found [here](https://github.com/MEPP-team/UDV).
 
-Version number is defined in `setup.py`.
+Note: for the client-side components [refer to UD-Viz](https://github.com/VCityTeam/UD-Viz/).
 
-For an install of the full pipeline of our application, please refer to
-[these install notes](https://github.com/MEPP-team/RICT/blob/master/Install.md).
-
-## Tools
+## Available tools
 
 ### API_Enhanced_City
+The goal of the 
+[API **Enhanced City**](https://github.com/MEPP-team/UD-Serv/blob/master/API_Enhanced_City) 
+is to handle, and serve through [web services](https://en.wikipedia.org/wiki/Web_service), 
+various types of city related data in the context of 
+[UD-SV (Urban Data Services and Vizualisation)](https://github.com/VCityTeam/UD-SV). 
 
-TODO
-
-Please visit [this page](https://github.com/MEPP-team/UD-Serv/blob/master/API_Enhanced_City/INSTALL.md) in order to install this tool.
+The API currently offers [web service](https://en.wikipedia.org/wiki/Web_service) 
+access to few following types of resources :
+- Documents (file and metadata)
+- Guided tours (sequences of documents with additional texts)
+- Links between documents and other (city) objects
+- User accounts and rights
 
 ### ExtractCityData
 
