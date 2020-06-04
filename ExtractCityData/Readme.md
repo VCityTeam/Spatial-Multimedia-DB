@@ -7,7 +7,7 @@ database in order to create a materialized view of buildings
 and optionnally their year of construction and year of demolition.
 
 ### Installation
-Refer to [Install.md installation instructions](Install.md)
+Refer to [the Install.md installation instructions](Install.md)
 
 ### Usage
 
