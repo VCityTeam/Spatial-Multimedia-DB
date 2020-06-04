@@ -21,10 +21,12 @@ access to few following types of resources :
 - User accounts and rights
 
 ### City 3DTiles tilers
-3DTiles, as 
-[described by Cesium](https://cesium.com/blog/2015/08/10/introducing-3d-tiles/), 
-is an open specification for streaming massive heterogeneous 3D 
-geospatial datasets. 
+3DTiles, as
+[described by Cesium](https://github.com/CesiumGS/3d-tiles), 
+is an open specification for sharing, visualizing, fusing, and interacting 
+with massive heterogenous 3D geospatial content across desktop, web, and 
+mobile applications.. 
+
 UD-Serv offers different kinds of "3DTiles tilers" that take a set of 
 CityGML files (version 2.0, XML format) and processes them to yield
 3DTiles tilesets. 
