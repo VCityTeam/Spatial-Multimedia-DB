@@ -37,7 +37,7 @@ from 2009 to 2015.
 
 ### ExtractCityData
 The [ExtractCityData tool](ExtractCityData) allows to process a 
-[3DCityDB](https://www.3dcitydb.org/3dcitydb/3dcitydbhomepage/)  
+[3DCityDB](https://www.3dcitydb.org/3dcitydb/3dcitydbhomepage/)
 database in order to create a materialized view of buildings (encountered in
 the database) constituted by their building id, their geometry and optionnally
 their year of construction and year of demolition.
