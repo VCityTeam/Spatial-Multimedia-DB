@@ -4,6 +4,10 @@ This script should :
 1. Load tileset.json  
 2. Extract information to compile versions and versionTransitions  
 3. Create a new tileset.json with the versions and versionTransitions data  
+
+## Hypothesis :  
+ * Versions exist at a precise date (ex : 2009) so their startDate equal their endDate
+ * A building is in its source state until the transaction is over then it is in its destination state. 
   
 ## Requirement :  
 See the requirement inside the file "requirement.txt"  

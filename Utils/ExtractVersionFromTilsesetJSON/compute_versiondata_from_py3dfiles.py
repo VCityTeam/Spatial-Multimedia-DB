@@ -141,7 +141,7 @@ def compile_version_and_versionTr(transactions, version_path, versionTr_path):
                  name="2009",
                  description="Limonest state in 2009 for the concurrent point of view",
                  startDate="2009",
-                 endDate="2010",
+                 endDate="2009",
                  tags=["concurrent"],
                  featuresIds=list(get_featuresid(transactions, 2009)['version']))
     
@@ -149,7 +149,7 @@ def compile_version_and_versionTr(transactions, version_path, versionTr_path):
                  name="2012",
                  description="Limonest state in 2012 for the concurrent point of view",
                  startDate="2012",
-                 endDate="2013",
+                 endDate="2012",
                  tags=["concurrent"],
                  featuresIds=list(get_featuresid(transactions, 2012)['version']))
     
@@ -157,7 +157,7 @@ def compile_version_and_versionTr(transactions, version_path, versionTr_path):
                  name="2015",
                  description="Limonest state in 2015 for the concurrent point of view",
                  startDate="2015",
-                 endDate="2016",
+                 endDate="2015",
                  tags=["concurrent"],
                  featuresIds=list(get_featuresid(transactions, 2015)['version']))
     
