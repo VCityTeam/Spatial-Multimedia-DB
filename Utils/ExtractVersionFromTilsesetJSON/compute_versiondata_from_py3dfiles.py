@@ -36,10 +36,10 @@ def log(msg):
 # In the attributs : extension-3DTILES_temporal it extracts all transactions
 # @return : list_transactions (list[dict])
 """
-def extract_transactions_from_tilesetJSON():
+def extract_transactions_from_tilesetJSON(tileset_path):
     log("-- Load tileset.json --")
     list_transactions = []
-    with open(os.path.join('.', 'data', 'tileset.json')) as json_file:
+    with open(tileset_path) as json_file:
         data = json.load(json_file)
         startDate = data['extensions']['3DTILES_temporal']['startDate']
         endDate = data['extensions']['3DTILES_temporal']['endDate']
@@ -214,6 +214,18 @@ if __name__ == "__main__":
 3. Create a new tileset.json with the versions and versionTransitions data'''
     parser = argparse.ArgumentParser(description=descr)
 
+    in_tileset_path_help = "local path for the tileset.json use in input"
+    parser.add_argument('-in', '--in_path', dest='in_path', type=str, default=os.path.join('.', 'data', 'tileset.json'), help=in_tileset_path_help)
+    
+    out_tileset_path_help = "local path for the new tileset.json give as output"
+    parser.add_argument('-out', '--out_path', dest='out_path', type=str, default=os.path.join('.', 'data', 'new_tileset.json'), help=out_tileset_path_help)
+    
+    schema_version_path_help = "local path for the json schema used to define the object Version"
+    parser.add_argument('--schema_version_path', dest='schema_version_path', type=str, default=os.path.join('.', 'data', '3DTILES_temporal.version.schema.schema.json'), help=schema_version_path_help)
+    
+    schema_versionTransition_path_help = "local path for the json schema used to define the object VersionTransation"
+    parser.add_argument('--schema_versionTransition_path', dest='schema_versionTransition_path', type=str, default=os.path.join('.', 'data', '3DTILES_temporal.versionTransition.schema.json'), help=schema_versionTransition_path_help)
+
     debug_help = "Mode debug, adds multiple print info to help know what's happenning"
     parser.add_argument('-d', '--debug', dest='debug', action='store_true', help=debug_help)
 
@@ -224,23 +236,23 @@ if __name__ == "__main__":
     else:
         print("Start without debug")
         
-    list_transactions = extract_transactions_from_tilesetJSON()
+    list_transactions = extract_transactions_from_tilesetJSON(args.in_path)
     df_transactions = format_data(list_transactions)
     
-    schema_version_path = os.path.join('.', 'data', '3DTILES_temporal.version.schema.schema.json')
-    schema_versionTransition_path = os.path.join('.', 'data', '3DTILES_temporal.versionTransition.schema.json')
+    schema_version_path = args.schema_version_path
+    schema_versionTransition_path = args.schema_versionTransition_path
 
     (v1, v2, v3, vt_v1_v2, vt_v2_v3) = compile_version_and_versionTr(df_transactions, 
                                                                      schema_version_path, 
                                                                      schema_versionTransition_path)
     
-    with open(os.path.join('.', 'data', 'tileset.json')) as json_file:
+    with open(args.in_path) as json_file:
         data = json.load(json_file)
 
     data['extensions']['3DTILES_temporal']['versions'] = [v1, v2, v3]
     data['extensions']['3DTILES_temporal']['versionTransitions'] = [vt_v1_v2, vt_v2_v3]
 
-    with open(os.path.join('.', 'data', 'new_tileset.json'), "w") as json_file:
+    with open(args.out_path, "w") as json_file:
         json.dump(data, json_file)
 
     print('done')
