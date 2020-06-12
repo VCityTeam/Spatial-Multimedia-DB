@@ -54,7 +54,7 @@ def extract_transactions_from_tilesetJSON(tileset_path):
 # @return : transactions (DataFrame)
 """
 def format_data(list_tr):
-    log("-- Formate data --")
+    log("-- Format data --")
     
     # Instance a DataFrame with the data found inside the named columns
     transactions = pd.DataFrame(list_tr, columns=["id", "startDate", "endDate", "source", "destination", "type", "transactions"])
@@ -86,20 +86,20 @@ def get_featuresid(transactions, millesime):
     ret = {"version":set(), "versionTr":set()}
     
     tr = transactions.loc[(transactions['startDate'] <= millesime) & (transactions['endDate'] > millesime)] # Filter only transactions that start in the millesime or before and end strictly after
-    a = get(tr, "source", millesime)
-    ret['version'].update(a['version'])
-    ret['versionTr'].update(a['versionTr'])
+    featureIds_at_millesime = get(tr, "source", millesime)
+    ret['version'].update(featureIds_at_millesime['version'])
+    ret['versionTr'].update(featureIds_at_millesime['versionTr'])
     
-    b = len(ret['version'])
-    c = len(ret['versionTr'])
-    log(f"simple tr : version= {b} - versionTR= {c}")
+    size_version = len(ret['version']) # Size of the versions get with the first filter
+    size_versionTr = len(ret['versionTr']) # Size of the versionTr get with the first filter
+    log(f"simple tr : version= {size_version} - versionTR= {size_versionTr}")
     
     tr = transactions.loc[(transactions['startDate'] < millesime) & (transactions['endDate'] == millesime)] # Filter only transactions that start striclty before the millesime  and end at it
-    a = get(tr, "destination", millesime)
-    ret['version'].update(a['version'])
-    ret['versionTr'].update(a['versionTr'])
+    featureIds_at_millesime = get(tr, "destination", millesime)
+    ret['version'].update(featureIds_at_millesime['version'])
+    ret['versionTr'].update(featureIds_at_millesime['versionTr'])
     
-    log(f"agg tr : version= {len(ret['version']) - b} - versionTR= {len(ret['versionTr']) - c}")
+    log(f"agg tr : version= {len(ret['version']) - size_version} - versionTR= {len(ret['versionTr']) - size_versionTr}")
     
     log(f"featuresIds found :  version= {len(ret['version'])} - versionTR= {len(ret['versionTr'])}")
     log(f"Details : {ret}")
@@ -110,7 +110,7 @@ def get_featuresid(transactions, millesime):
 # Iterrate on a Dataframe to extract id of transactions for the versionTransation and id of buildings for version
 #
 # @Params:
-#   df : DataFrame
+#   df : DataFrame (columns=["id", "startDate", "endDate", "source", "destination", "type", "transactions"])
 #   row_name : String row_name for the featuresId (ex: "source" or "destination") 
 #   millesime : int (year)
 # @return: a dictionnary {version:set, versionTr:set}
@@ -123,13 +123,12 @@ def get(df, row_name, millesime):
             ret['version'].add(s) #take the source
     
         if row['transactions']==row['transactions']: # separate simple and aggregate transactions (simple has NaN value in the transactions attribut)
-            l = row['transactions']
-            for tr in l:
-                if (tr['startDate'] <= millesime < tr['endDate']) : # filter by security in the transaction aggregated
+            for tr in row['transactions']:
+                if (tr['startDate'] <= millesime and millesime < tr['endDate']) : # filter by security in the transaction aggregated
                     ret['versionTr'].add(tr['id'])
                     for s in tr['source']:
                         ret['version'].add(s)
-                elif (tr['startDate'] < millesime == tr['endDate']):
+                elif (tr['startDate'] < millesime and millesime == tr['endDate']):
                     ret['versionTr'].add(tr['id'])
                     for s in tr['destination']:
                         ret['version'].add(s)
@@ -152,16 +151,16 @@ def compile_version_and_versionTr(transactions, version_path, versionTr_path):
     Version = 0
     VersionTransition = 0
     with open(schema_version_path) as json_file:
-        data = json.load(json_file)
-        Version = warlock.model_factory(data) # Create a class following the model provided by the json schema.
+        version_json_data = json.load(json_file)
+        Version = warlock.model_factory(version_json_data) # Create a class following the model provided by the json schema.
     
     with open(schema_versionTransition_path) as json_file:  
-      data = json.load(json_file)
-      VersionTransition = warlock.model_factory(data)
+      versionTransition_json_data = json.load(json_file)
+      VersionTransition = warlock.model_factory(versionTransition_json_data)
 
     v1 = Version(id="v1",
                  name="2009",
-                 description="Limonest state in 2009 for the concurrent point of view",
+                 description="State in 2009 for the concurrent point of view",
                  startDate="2009",
                  endDate="2009",
                  tags=["concurrent"],
@@ -169,7 +168,7 @@ def compile_version_and_versionTr(transactions, version_path, versionTr_path):
     
     v2 = Version(id="v2",
                  name="2012",
-                 description="Limonest state in 2012 for the concurrent point of view",
+                 description="State in 2012 for the concurrent point of view",
                  startDate="2012",
                  endDate="2012",
                  tags=["concurrent"],
@@ -177,7 +176,7 @@ def compile_version_and_versionTr(transactions, version_path, versionTr_path):
     
     v3 = Version(id="v3",
                  name="2015",
-                 description="Limonest state in 2015 for the concurrent point of view",
+                 description="State in 2015 for the concurrent point of view",
                  startDate="2015",
                  endDate="2015",
                  tags=["concurrent"],
