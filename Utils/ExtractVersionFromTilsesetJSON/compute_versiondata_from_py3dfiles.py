@@ -31,9 +31,12 @@ def log(msg):
         print(msg)
 
 
-# load data
-# /!\ The list of transactions are expected to be found in extensions-3DTILES_temporal-transactions
-def load_tilesetJSON():
+"""
+# Load the file .\data\tileset.json as a json
+# In the attributs : extension-3DTILES_temporal it extracts all transactions
+# @return : list_transactions (list[dict])
+"""
+def extract_transactions_from_tilesetJSON():
     log("-- Load tileset.json --")
     list_transactions = []
     with open(os.path.join('.', 'data', 'tileset.json')) as json_file:
@@ -45,8 +48,15 @@ def load_tilesetJSON():
     log(f"startDate = {startDate} \nendDate = {endDate}\nlist_transactions = {list_transactions}")
     return list_transactions
 
+"""
+# Push the data inside a DataFrame and add type to it
+# @param : list_tr (list[dict])
+# @return : transactions (DataFrame)
+"""
 def format_data(list_tr):
     log("-- Formate data --")
+    
+    # Instance a DataFrame with the data found inside the named columns
     transactions = pd.DataFrame(list_tr, columns=["id", "startDate", "endDate", "source", "destination", "type", "transactions"])
 
     #Auto detect of type
@@ -99,7 +109,7 @@ def get_featuresid(transactions, millesime):
 """
 # Iterrate on a Dataframe to extract id of transactions for the versionTransation and id of buildings for version
 #
-# @Param:
+# @Params:
 #   df : DataFrame
 #   row_name : String row_name for the featuresId (ex: "source" or "destination") 
 #   millesime : int (year)
@@ -128,6 +138,15 @@ def get(df, row_name, millesime):
 
 
 # Hardcoded creation of version and versionTransition
+"""
+# Hardcoded creation of versions and versionTransations.
+# Objects of Version and VersionTransation are based on json schema for consistency with their use in py3DTiles
+# @Param:
+#   transactions : DataFrame
+#   version_path : json schema of version
+#   versionTr_path : json schema of versionTransition
+# @return: (v1, v2, v3, vt_v1_v2, vt_v2_v3) (tuple) 
+"""
 def compile_version_and_versionTr(transactions, version_path, versionTr_path):
     log("-- Compile version and versionTransition --")
     Version = 0
@@ -205,7 +224,7 @@ if __name__ == "__main__":
     else:
         print("Start without debug")
         
-    list_transactions = load_tilesetJSON()
+    list_transactions = extract_transactions_from_tilesetJSON()
     df_transactions = format_data(list_transactions)
     
     schema_version_path = os.path.join('.', 'data', '3DTILES_temporal.version.schema.schema.json')
