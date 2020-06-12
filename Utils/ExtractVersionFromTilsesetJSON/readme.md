@@ -8,7 +8,11 @@ This script should :
 ## Hypothesis :  
  * Versions exist at a precise date (ex : 2009) so their startDate equal their endDate
  * A building is in its source state until the transaction is over then it is in its destination state. 
+ *  Expects a temporal tileset existing from 2009 to 2015
+ *  Creates three versions: one in 2009, one in 2012 and one in 2015 and two versions transitions between these versions
   
+
+
 ## Requirement :  
 See the requirement inside the file "requirement.txt"  
 You can install them with the command `pip install -r requirement.txt` 
