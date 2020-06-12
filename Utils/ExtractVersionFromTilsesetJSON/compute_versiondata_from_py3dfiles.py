@@ -16,6 +16,7 @@ This script should :
 """
 
 import warlock
+import argparse
 import json
 import os
 import sys
@@ -58,7 +59,7 @@ def format_data(list_tr):
 
 """
 # Extracte from a DataFrame all the IDs of the batiment that should be present in the version.
-# The extraction is based on the transactions (trasnformation of a batiment between two times)
+# The extraction is based on the transactions (transformation of a building between two times)
 # A version represents a year (ex: 2009, 2012, 2015)
 # When a transactions start at or before the year and end after we take the source id
 # When a transactions end at the year we take the destination id
@@ -66,7 +67,9 @@ def format_data(list_tr):
 # @Param:
 #   transaction : DataFrame 
 #   millesime : int (year)
-# @return: a set of the ids (with unicity)
+# @return: a dictionnary with two set of features ids (unicity is guaranted)
+#       "version" holds all buildings' id 
+#       "versionTr" holds all transactions' id link to the current version
 """
 def get_featuresid(transactions, millesime):
     log(f"-- Get features' ID for {millesime} --")
@@ -185,8 +188,19 @@ def compile_version_and_versionTr(transactions, version_path, versionTr_path):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        debug = True
+    # arg parse
+    descr = '''This script should :
+1. Load tileset.json
+2. Extract information to compile versions and versionTransitions
+3. Create a new tileset.json with the versions and versionTransitions data'''
+    parser = argparse.ArgumentParser(description=descr)
+
+    debug_help = "Mode debug, adds multiple print info to help know what's happenning"
+    parser.add_argument('-d', '--debug', dest='debug', action='store_true', help=debug_help)
+
+    args = parser.parse_args()
+    debug = args.debug
+    if debug:
         log("Start with debug (an argument has been passed so debug is ON)")
     else:
         print("Start without debug")
@@ -211,10 +225,3 @@ if __name__ == "__main__":
         json.dump(data, json_file)
 
     print('done')
-
-"""
-Shortcoming :
-We can't be sure to have all bulding ids reference in the version because 
-if a building don't have any transactions, i assume it will not be present there.
-
-"""
