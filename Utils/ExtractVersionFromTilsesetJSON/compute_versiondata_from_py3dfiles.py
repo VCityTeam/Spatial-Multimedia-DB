@@ -110,7 +110,7 @@ def get_featuresid(transactions, millesime):
 # Iterrate on a Dataframe to extract id of transactions for the versionTransation and id of buildings for version
 #
 # @Params:
-#   df : DataFrame (columns=["id", "startDate", "endDate", "source", "destination", "type", "transactions"])
+#   df : DataFrame (columns=["id", "startDate", "endDate", "source", "destination", "type", "transactions"]), In use this dataFrame is a subset with only transactions that start striclty before the millesime  and end at it.
 #   row_name : String row_name for the featuresId (ex: "source" or "destination") 
 #   millesime : int (year)
 # @return: a dictionnary {version:set, versionTr:set}
@@ -121,7 +121,7 @@ def get(df, row_name, millesime):
         ret['versionTr'].add(row['id'])
         for s in row[row_name]:
             ret['version'].add(s) #take the source
-    
+        
         if row['transactions']==row['transactions']: # separate simple and aggregate transactions (simple has NaN value in the transactions attribut)
             for tr in row['transactions']:
                 if (tr['startDate'] <= millesime and millesime < tr['endDate']) : # filter by security in the transaction aggregated
