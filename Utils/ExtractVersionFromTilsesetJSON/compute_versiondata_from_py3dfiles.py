@@ -34,6 +34,7 @@ def log(msg):
 """
 # Load the file .\data\tileset.json as a json
 # In the attributs : extension-3DTILES_temporal it extracts all transactions
+# @param: tileset_path (str)
 # @return : list_transactions (list[dict])
 """
 def extract_transactions_from_tilesetJSON(tileset_path):
