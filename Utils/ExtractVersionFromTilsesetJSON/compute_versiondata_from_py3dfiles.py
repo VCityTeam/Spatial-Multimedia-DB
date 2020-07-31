@@ -19,14 +19,13 @@ import warlock
 import argparse
 import json
 import os
-import sys
 import pandas as pd
 
 
 debug = False # By default no log wanted
 
 # Log for debugging purpose
-def log(msg):
+def log(debug,msg):
     if debug:
         print(msg)
 
@@ -37,8 +36,8 @@ def log(msg):
 # @param: tileset_path (str)
 # @return : list_transactions (list[dict])
 """
-def extract_transactions_from_tilesetJSON(tileset_path):
-    log("-- Load tileset.json --")
+def extract_transactions_from_tilesetJSON(debug,tileset_path):
+    log(debug,"-- Load tileset.json --")
     list_transactions = []
     with open(tileset_path) as json_file:
         data = json.load(json_file)
@@ -46,7 +45,7 @@ def extract_transactions_from_tilesetJSON(tileset_path):
         endDate = data['extensions']['3DTILES_temporal']['endDate']
         list_transactions = data['extensions']['3DTILES_temporal']['transactions']
 
-    log(f"startDate = {startDate} \nendDate = {endDate}\nlist_transactions = {list_transactions}")
+    log(debug,f"startDate = {startDate} \nendDate = {endDate}\nlist_transactions = {list_transactions}")
     return list_transactions
 
 """
@@ -54,8 +53,8 @@ def extract_transactions_from_tilesetJSON(tileset_path):
 # @param : list_tr (list[dict])
 # @return : transactions (DataFrame)
 """
-def format_data(list_tr):
-    log("-- Format data --")
+def format_data(debug,list_tr):
+    log(debug,"-- Format data --")
     
     # Instance a DataFrame with the data found inside the named columns
     transactions = pd.DataFrame(list_tr, columns=["id", "startDate", "endDate", "source", "destination", "type", "transactions"])
@@ -63,7 +62,7 @@ def format_data(list_tr):
     #Auto detect of type
     transactions = transactions.convert_dtypes()
 
-    log(f"Describe data : {transactions.describe(include=['string', 'Int64'])}")
+    log(debug,f"Describe data : {transactions.describe(include=['string', 'Int64'])}")
     
     return transactions
 
@@ -82,28 +81,28 @@ def format_data(list_tr):
 #       "version" holds all buildings' id 
 #       "versionTr" holds all transactions' id link to the current version
 """
-def get_featuresid(transactions, millesime):
-    log(f"-- Get features' ID for {millesime} --")
+def get_featuresid(debug,transactions, millesime):
+    log(debug,f"-- Get features' ID for {millesime} --")
     ret = {"version":set(), "versionTr":set()}
     
     tr = transactions.loc[(transactions['startDate'] <= millesime) & (transactions['endDate'] > millesime)] # Filter only transactions that start in the millesime or before and end strictly after
-    featureIds_at_millesime = get(tr, "source", millesime)
+    featureIds_at_millesime = get(debug,tr, "source", millesime)
     ret['version'].update(featureIds_at_millesime['version'])
     ret['versionTr'].update(featureIds_at_millesime['versionTr'])
     
     size_version = len(ret['version']) # Size of the versions get with the first filter
     size_versionTr = len(ret['versionTr']) # Size of the versionTr get with the first filter
-    log(f"simple tr : version= {size_version} - versionTR= {size_versionTr}")
+    log(debug,f"simple tr : version= {size_version} - versionTR= {size_versionTr}")
     
     tr = transactions.loc[(transactions['startDate'] < millesime) & (transactions['endDate'] == millesime)] # Filter only transactions that start striclty before the millesime  and end at it
-    featureIds_at_millesime = get(tr, "destination", millesime)
+    featureIds_at_millesime = get(debug,tr, "destination", millesime)
     ret['version'].update(featureIds_at_millesime['version'])
     ret['versionTr'].update(featureIds_at_millesime['versionTr'])
     
-    log(f"agg tr : version= {len(ret['version']) - size_version} - versionTR= {len(ret['versionTr']) - size_versionTr}")
+    log(debug,f"agg tr : version= {len(ret['version']) - size_version} - versionTR= {len(ret['versionTr']) - size_versionTr}")
     
-    log(f"featuresIds found :  version= {len(ret['version'])} - versionTR= {len(ret['versionTr'])}")
-    log(f"Details : {ret}")
+    log(debug,f"featuresIds found :  version= {len(ret['version'])} - versionTR= {len(ret['versionTr'])}")
+    log(debug,f"Details : {ret}")
     return ret
 
 
@@ -116,7 +115,7 @@ def get_featuresid(transactions, millesime):
 #   millesime : int (year)
 # @return: a dictionnary {version:set, versionTr:set}
 """
-def get(df, row_name, millesime):
+def get(debug,df, row_name, millesime):
     ret = {'version':set(), 'versionTr':set()} # set for batiment's id and transactions's id to have unicity
     for index, row in df.iterrows():
         ret['versionTr'].add(row['id'])
@@ -147,8 +146,8 @@ def get(df, row_name, millesime):
 #   versionTr_path : json schema of versionTransition
 # @return: (v1, v2, v3, vt_v1_v2, vt_v2_v3) (tuple) 
 """
-def compile_version_and_versionTr(transactions, version_path, versionTr_path):
-    log("-- Compile version and versionTransition --")
+def compile_version_and_versionTr(debug,transactions, version_path, versionTr_path):
+    log(debug,"-- Compile version and versionTransition --")
     Version = 0
     VersionTransition = 0
     with open(schema_version_path) as json_file:
@@ -165,7 +164,7 @@ def compile_version_and_versionTr(transactions, version_path, versionTr_path):
                  startDate="2009",
                  endDate="2009",
                  tags=["concurrent"],
-                 featuresIds=list(get_featuresid(transactions, 2009)['version']))
+                 featuresIds=list(get_featuresid(debug,transactions, 2009)['version']))
     
     v2 = Version(id="v2",
                  name="2012",
@@ -173,7 +172,7 @@ def compile_version_and_versionTr(transactions, version_path, versionTr_path):
                  startDate="2012",
                  endDate="2012",
                  tags=["concurrent"],
-                 featuresIds=list(get_featuresid(transactions, 2012)['version']))
+                 featuresIds=list(get_featuresid(debug,transactions, 2012)['version']))
     
     v3 = Version(id="v3",
                  name="2015",
@@ -181,7 +180,7 @@ def compile_version_and_versionTr(transactions, version_path, versionTr_path):
                  startDate="2015",
                  endDate="2015",
                  tags=["concurrent"],
-                 featuresIds=list(get_featuresid(transactions, 2015)['version']))
+                 featuresIds=list(get_featuresid(debug,transactions, 2015)['version']))
     
     vt_v1_v2 = VersionTransition({"id":"vt1", # attribut passed by a dictionnay because "from" already meaning something. To bypasse the interpretation of it we need to pass it has a string
                                  "name":"v1->v2",
@@ -191,7 +190,7 @@ def compile_version_and_versionTr(transactions, version_path, versionTr_path):
                                  "to":"v2",
                                  "description":"Transition between v1 and v2",
                                  "type":"realized",
-                                 "transactionsIds":list(get_featuresid(transactions, 2009)['versionTr'])})
+                                 "transactionsIds":list(get_featuresid(debug,transactions, 2009)['versionTr'])})
     
     vt_v2_v3 = VersionTransition({"id":"vt2",
                                  "name":"v2->v3",
@@ -201,7 +200,7 @@ def compile_version_and_versionTr(transactions, version_path, versionTr_path):
                                  "to":"v3",
                                  "description":"Transition between v2 and v3",
                                  "type":"realized",
-                                 "transactionsIds":list(get_featuresid(transactions, 2012)['versionTr'])})
+                                 "transactionsIds":list(get_featuresid(debug,transactions, 2012)['versionTr'])})
     return (v1, v2, v3, vt_v1_v2, vt_v2_v3)
 
 
@@ -215,16 +214,16 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=descr)
 
     in_tileset_path_help = "local path for the tileset.json use in input"
-    parser.add_argument('-in', '--in_path', dest='in_path', type=str, default=os.path.join('.', 'data', 'tileset.json'), help=in_tileset_path_help)
+    parser.add_argument('-in', '--in_path', dest='in_path', type=str, default=os.path.join('.', 'Output', 'data', 'tileset.json'), help=in_tileset_path_help)
     
     out_tileset_path_help = "local path for the new tileset.json give as output"
-    parser.add_argument('-out', '--out_path', dest='out_path', type=str, default=os.path.join('.', 'data', 'new_tileset.json'), help=out_tileset_path_help)
+    parser.add_argument('-out', '--out_path', dest='out_path', type=str, default=os.path.join('.', 'Output', 'data', 'new_tileset.json'), help=out_tileset_path_help)
     
     schema_version_path_help = "local path for the json schema used to define the object Version"
-    parser.add_argument('--schema_version_path', dest='schema_version_path', type=str, default=os.path.join('.', 'data', '3DTILES_temporal.version.schema.schema.json'), help=schema_version_path_help)
+    parser.add_argument('--schema_version_path', dest='schema_version_path', type=str, default=os.path.join('.','Output',  'data',  '3DTILES_temporal.version.schema.schema.json'), help=schema_version_path_help)
     
     schema_versionTransition_path_help = "local path for the json schema used to define the object VersionTransation"
-    parser.add_argument('--schema_versionTransition_path', dest='schema_versionTransition_path', type=str, default=os.path.join('.', 'data', '3DTILES_temporal.versionTransition.schema.json'), help=schema_versionTransition_path_help)
+    parser.add_argument('--schema_versionTransition_path', dest='schema_versionTransition_path', type=str, default=os.path.join('.','Output',  'data', '3DTILES_temporal.versionTransition.schema.json'), help=schema_versionTransition_path_help)
 
     debug_help = "Mode debug, adds multiple print info to help know what's happenning"
     parser.add_argument('-d', '--debug', dest='debug', action='store_true', help=debug_help)
@@ -232,17 +231,17 @@ if __name__ == "__main__":
     args = parser.parse_args()
     debug = args.debug
     if debug:
-        log("Start with debug (an argument has been passed so debug is ON)")
+        log(debug,"Start with debug (an argument has been passed so debug is ON)")
     else:
         print("Start without debug")
         
-    list_transactions = extract_transactions_from_tilesetJSON(args.in_path)
-    df_transactions = format_data(list_transactions)
+    list_transactions = extract_transactions_from_tilesetJSON(debug,args.in_path)
+    df_transactions = format_data(debug,list_transactions)
     
     schema_version_path = args.schema_version_path
     schema_versionTransition_path = args.schema_versionTransition_path
 
-    (v1, v2, v3, vt_v1_v2, vt_v2_v3) = compile_version_and_versionTr(df_transactions, 
+    (v1, v2, v3, vt_v1_v2, vt_v2_v3) = compile_version_and_versionTr(debug,df_transactions, 
                                                                      schema_version_path, 
                                                                      schema_versionTransition_path)
     
