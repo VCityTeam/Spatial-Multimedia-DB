@@ -21,8 +21,8 @@ To execute the script, follow the requirement and then execute  "compute_version
 ## Execution with docker:  
 in this folder : 
 ```
-$docker build -t compute_versionData .
-$docker run --mount src=`pwd`,target=/Output,type=bind -it compute_versionData:latest
+$docker build -t compute_version_data .
+$docker run --mount src=`pwd`,target=/Output,type=bind -it compute_version_data:latest
 ```
 The tileset.json has to be in ./data
 
