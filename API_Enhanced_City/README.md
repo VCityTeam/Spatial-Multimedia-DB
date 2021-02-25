@@ -78,7 +78,7 @@ The view is defined in the [api](./api/) folder, and the route themselves are al
 ## ORM (Object Relational Mapping)
 
 ### Description
-ORM is a way to crate a strong interaction between objects that should be persisted and a DataBase (DB) : when an object is modified, the modification can be easily persisted to the DB without the need to write any SQL request.
+ORM is a way to create a strong interaction between objects that should be persisted and a DataBase (DB) : when an object is modified, the modification can be easily persisted to the DB without the need to write any SQL request.
 Such a feature can reduce the complexity of the code since it offers to increase its abstraction level by making it independent from the particular technology of the chosen concrete DB (postgreSQL, Oracle, MySQL...).
 
 ### How to?
