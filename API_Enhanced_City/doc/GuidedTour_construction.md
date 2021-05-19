@@ -1,4 +1,5 @@
 # Guided Tour Construction
+## Setup
  * First of all you need to launch [API Enhanced database](https://github.com/VCityTeam/UD-Serv/blob/master/API_Enhanced_City/INSTALL.md)
  * install pgadmin on your computer
  ````
