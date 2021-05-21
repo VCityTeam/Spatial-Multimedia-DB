@@ -1,7 +1,8 @@
 # Guided Tour Construction
+⚠️⚠️ YOU NEED TO HAVE EXTENDED DOCUMENT BEFORE TO CREATE A GUIDED TOUR ⚠️⚠️
 ## Setup
  * First of all you need to launch [API Enhanced database](https://github.com/VCityTeam/UD-Serv/blob/master/API_Enhanced_City/INSTALL.md)
- * install pgadmin on your computer
+ * Install pgadmin on your computer
  ````
  sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
 
@@ -13,4 +14,9 @@
 
  sudo apt install pgadmin4
  ````
+* Connect the Database with pgadmin with the configuration of the API Enhanced database in the [.env](https://github.com/VCityTeam/UD-Serv/blob/master/API_Enhanced_City/.env)
+![Example](https://github.com/VCityTeam/UD-Serv/blob/master/API_Enhanced_City/doc/img/api/Serveur_localhost.png)
+
+## Configure a guided tour
+In the pgadmin server your got three important table : **visualisation** is the coordinate (position and rotation) of the document in UD-Viz scene, **guided_tour** is the information of differents guided created and **document_guided_tour** is to link document and guided tour.
  
