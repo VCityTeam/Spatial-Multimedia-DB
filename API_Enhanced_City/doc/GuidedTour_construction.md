@@ -18,7 +18,11 @@
 ![Example](https://github.com/VCityTeam/UD-Serv/blob/master/API_Enhanced_City/doc/img/api/Serveur_localhost.png)
 
 ## Configure a guided tour
-In the pgadmin server your got three important table : **visualisation** is the coordinate (position and rotation) of the document in UD-Viz scene, **guided_tour** is the information of differents guided created and **document_guided_tour** is to link document and guided tour.
+In the pgadmin server your got three important table : 
+  - **visualisation** is the coordinate (position and rotation) of the document in UD-Viz scene, 
+  - **guided_tour** is the information of differents guided created and 
+  - **document_guided_tour** is to link document and guided tour.
+
 * **First step** : Create a guided_tour table with an id, name and description.
 * Then you need to link a guided_tour id and visualisation id to add the document to the correct guided tour.
 
