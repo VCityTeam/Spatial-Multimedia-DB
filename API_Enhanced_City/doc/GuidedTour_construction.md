@@ -3,17 +3,17 @@
 ## Setup
  * First of all you need to launch [API Enhanced database](https://github.com/VCityTeam/UD-Serv/blob/master/API_Enhanced_City/INSTALL.md)
  * Install pgadmin on your computer
- ````
- sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+   ````
+   sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
 
- sudo apt install wget ca-certificates
+   sudo apt install wget ca-certificates
 
- wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add
+   wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add
 
- sudo apt update
+   sudo apt update
 
- sudo apt install pgadmin4
- ````
+   sudo apt install pgadmin4
+   ````
 * Connect the Database with pgadmin with the configuration of the API Enhanced database in the [.env](https://github.com/VCityTeam/UD-Serv/blob/master/API_Enhanced_City/.env)
 ![Example](https://github.com/VCityTeam/UD-Serv/blob/master/API_Enhanced_City/doc/img/api/Serveur_localhost.png)
 
