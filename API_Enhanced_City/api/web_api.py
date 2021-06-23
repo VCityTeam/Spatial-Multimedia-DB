@@ -23,8 +23,10 @@ from helpers import *
 app = Flask(__name__)
 app.json_encoder = JsonCustomEncoder
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-# CORS(app)
-cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+CORS(app)
+#cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+#CORS(app, resources={r"/api/": {"origins": "", "allow_headers": ["Authorization", "Content-Type"], "expose_headers": "", "methods": ["OPTIONS", "GET", "POST"]}})
+
 
 
 @app.route('/')
