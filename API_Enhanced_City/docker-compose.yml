@@ -5,13 +5,13 @@ services:
     image: postgres:10
     container_name: enhanced_city_db
     environment:
-      - POSTGRES_USER=${user}
-      - POSTGRES_PASSWORD=${password}
-      - POSTGRES_DB=${dbname}
+      - POSTGRES_USER=${SPATIAL_MULTIMEDIA_DB_USER}
+      - POSTGRES_PASSWORD=${SPATIAL_MULTIMEDIA_DB_PASSWORD}
+      - POSTGRES_DB=${SPATIAL_MULTIMEDIA_DB_NAME}
     volumes:
       - ./postgres-data/postgres:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - ${SPATIAL_MULTIMEDIA_DB_PORT}:5432
   app:
     container_name: enhanced_city_api
     build: .

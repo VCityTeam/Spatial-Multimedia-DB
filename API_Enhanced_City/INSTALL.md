@@ -12,12 +12,12 @@ Modify the [.env](.env) file to match this configuration:
 
 ````
 # database configuration
-ordbms=postgresql
-user=postgres
-password=password
-host=postgres
-port=5432
-dbname=extendeddoc
+SPATIAL_MULTIMEDIA_ORDBMS=postgresql
+SPATIAL_MULTIMEDIA_DB_USER=postgres
+SPATIAL_MULTIMEDIA_DB_PASSWORD=password
+SPATIAL_MULTIMEDIA_DB_HOST=postgres
+SPATIAL_MULTIMEDIA_DB_PORT=5432
+SPATIAL_MULTIMEDIA_DB_NAME=extendeddoc
 ````
 
 > *Note: the .env that is commited should not be modified because it is used by travis for CI.*  
@@ -139,12 +139,12 @@ Then modify the [**.env**](.env) to reflect your configuration.
 If you have created a new database as below, no change is needed but verify anyway everything are correct
 
 ```
-ordbms: postgresql
-user: citydb_user
-password: password
-host: localhost
-port: 5432
-dbname: extendedDoc
+SPATIAL_MULTIMEDIA_ORDBMS: postgresql
+SPATIAL_MULTIMEDIA_DB_USER: citydb_user
+SPATIAL_MULTIMEDIA_DB_PASSWORD: password
+SPATIAL_MULTIMEDIA_DB_HOST: localhost
+SPATIAL_MULTIMEDIA_DB_PORT: 5432
+SPATIAL_MULTIMEDIA_DB_NAME: extendedDoc
 ```
 The port number is (usually) configured in `/etc/postgresql/X.X/main/postgresql.conf` on Linux
 and in `Program Files (x86)\PostgreSQL\X.X\data\postgresql.conf` on Windows

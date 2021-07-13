@@ -44,8 +44,8 @@ if __name__ == '__main__':
     encoded_JWT = jwt.encode({
         'id': 1,
         'username': 'cool'
-    }, VarConfig.get()['password'], algorithm='HS256')
-    decoded_JWT = jwt.decode(encoded_JWT, VarConfig.get()['password'], algorithms=['HS256'])
+    }, VarConfig.get()['SPATIAL_MULTIMEDIA_DB_PASSWORD'], algorithm='HS256')
+    decoded_JWT = jwt.decode(encoded_JWT, VarConfig.get()['SPATIAL_MULTIMEDIA_DB_PASSWORD'], algorithms=['HS256'])
     print(encoded_JWT)
     print(decoded_JWT)
 

@@ -47,8 +47,8 @@ To renegerate it, follow these instruction:
   * Connect to the database in pycharm:
     * Open the database tab from the right side on pycharm
     * Click on the *+*, choose *Data Source*, *PostgreSQL*
-    * In the Host, put the IP address of your docker (you can find it by running the following command in a terminal: `docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' enhanced_city_db`)
-    *  The other information match the values in the `.env` file (user = postgres, password = password, port = 5432 and Database = extendedDoc)
+    * In the SPATIAL_MULTIMEDIA_DB_HOST, put the IP address of your docker (you can find it by running the following command in a terminal: `docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' enhanced_city_db`)
+    *  The other information match the values in the `.env` file (SPATIAL_MULTIMEDIA_DB_USER = postgres, SPATIAL_MULTIMEDIA_DB_PASSWORD = password, SPATIAL_MULTIMEDIA_DB_PORT = 5432 and Database = extendedDoc)
     * Hit Test Connection and then Ok
    * Expand: the database imported in pycharm, extendedDoc and schemas
    * Right click on `public`, choose `Diagrams` and `show visualization`.
@@ -119,12 +119,12 @@ Defines the configuration of the logger of the application.
 Configures the application by using the environment variables (defined in [.env](./.env)). The .env file has the following definitions :
 
 ```
-ordbms=<type of DB>
-user=<username to use the DB>
-password=<password of the user>
-host=<server hosting the DB>
-port=<port of the server>
-dbname=<name of the database>
+SPATIAL_MULTIMEDIA_ORDBMS=<type of DB>
+SPATIAL_MULTIMEDIA_DB_USER=<username to use the DB>
+SPATIAL_MULTIMEDIA_DB_PASSWORD=<password of the user>
+SPATIAL_MULTIMEDIA_DB_HOST=<server hosting the DB>
+SPATIAL_MULTIMEDIA_DB_PORT=<port of the server>
+SPATIAL_MULTIMEDIA_DB_NAME=<name of the database>
 ```
 
 ## Other documentations

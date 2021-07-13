@@ -17,7 +17,7 @@ class VarConfig:
 
             # if the environment variable "EXTENDED_DOC_PASSWORD" exists
             if os.environ.get("EXTENDED_DOC_PASSWORD"):
-                config['password'] = os.environ["EXTENDED_DOC_PASSWORD"]
+                config['SPATIAL_MULTIMEDIA_DB_PASSWORD'] = os.environ["EXTENDED_DOC_PASSWORD"]
 
             return config
 
