@@ -105,12 +105,12 @@ class UserController:
                 admin_exist = True
         if not admin_exist:
             attributes = {
-                "email": "admin@udv.fr",
-                "firstName": "Admin",
-                "lastName": "UDV",
-                "password": "password",
+                "email": VarConfig.get()['SPATIAL_MULTIMEDIA_DB_ADMIN_EMAIL'],
+                "firstName": VarConfig.get()['SPATIAL_MULTIMEDIA_DB_ADMIN_FIRST_NAME'],
+                "lastName": VarConfig.get()['SPATIAL_MULTIMEDIA_DB_ADMIN_LAST_NAME'],
+                "password": VarConfig.get()['SPATIAL_MULTIMEDIA_DB_ADMIN_PASSWORD'],
                 "role": "admin",
-                "username": "admin",
+                "username": VarConfig.get()['SPATIAL_MULTIMEDIA_DB_ADMIN_USERNAME'],
                 "user_position": "admin"
             }
             UserController.create_admin_user(attributes)

@@ -11,6 +11,6 @@ default_db_info = ('postgresql://''postgres:password'
 
 def get_db_info():
     config = VarConfig.get()
-    return f'{config["SPATIAL_MULTIMEDIA_ORDBMS"]}://{config["SPATIAL_MULTIMEDIA_DB_USER"]}:' \
-           f'{config["SPATIAL_MULTIMEDIA_DB_PASSWORD"]}@{config["SPATIAL_MULTIMEDIA_DB_HOST"]}:' \
-           f'{config["SPATIAL_MULTIMEDIA_DB_PORT"]}/{config["SPATIAL_MULTIMEDIA_DB_NAME"]}'
+    return f'{config["POSTGRES_ORDBMS"]}://{config["POSTGRES_USER"]}:' \
+           f'{config["POSTGRES_PASSWORD"]}@{config["POSTGRES_HOST"]}:' \
+           f'{config["POSTGRES_PORT"]}/{config["POSTGRES_DB_NAME"]}'
