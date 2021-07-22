@@ -101,8 +101,9 @@ class UserController:
         print('try to create admin')
         admin_exist = False
         for user in session.query(User).all():
-            if user.username == VarConfig.get()['SPATIAL_MULTIMEDIA_DB_ADMIN_USERNAME']:
+            if user.username == VarConfig.get()['SPATIAL_MULTIMEDIA_DB_ADMIN_USERNAME'] or user.email == VarConfig.get()['SPATIAL_MULTIMEDIA_DB_ADMIN_EMAIL']:
                 admin_exist = True
+                print("An admin with the requested username or email already exists in database. New admin won't be added.")
         if not admin_exist:
             attributes = {
                 "email": VarConfig.get()['SPATIAL_MULTIMEDIA_DB_ADMIN_EMAIL'],

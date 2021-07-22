@@ -1,7 +1,10 @@
-.env
 upload
 .pytest_cache
 .idea
 venv
 postgres-data
-__pycache__
+log/*
+**/__pycache__/*
+postgres-data/*
+upload/*
+*.log
