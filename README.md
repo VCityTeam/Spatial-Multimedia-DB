@@ -1,1 +1,0 @@
-# Spatial-Multimedia-DB

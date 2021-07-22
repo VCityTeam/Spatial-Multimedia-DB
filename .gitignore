@@ -1,17 +1,7 @@
-.idea
 .env
+upload
+.pytest_cache
+.idea
 venv
-ExtractCityData/db_config.yml
-UDV_server.egg-info
-API_Extended_Document/log/*
-API_Extended_Document/Dockerfile
-API_Extended_Document/**/__pycache__/*
-API_Extended_Document/log/*
-API_Extended_Document/Dockerfile
-API_Extended_Document/postgres-data/*
-API_Extended_Document/upload/*
-*.log
-
-# When working with remark (mardown link checking)
-node_modules
-package-lock.json
+postgres-data
+__pycache__

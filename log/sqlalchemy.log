@@ -1,0 +1,69 @@
+[INFO] 2021-07-22 08:03:24,724 : select version()
+[INFO] 2021-07-22 08:03:24,725 : {}
+[INFO] 2021-07-22 08:03:24,726 : select current_schema()
+[INFO] 2021-07-22 08:03:24,727 : {}
+[INFO] 2021-07-22 08:03:24,729 : SELECT CAST('test plain returns' AS VARCHAR(60)) AS anon_1
+[INFO] 2021-07-22 08:03:24,729 : {}
+[INFO] 2021-07-22 08:03:24,730 : SELECT CAST('test unicode returns' AS VARCHAR(60)) AS anon_1
+[INFO] 2021-07-22 08:03:24,731 : {}
+[INFO] 2021-07-22 08:03:24,731 : show standard_conforming_strings
+[INFO] 2021-07-22 08:03:24,732 : {}
+[INFO] 2021-07-22 08:03:24,815 : select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[INFO] 2021-07-22 08:03:24,815 : {'name': 'comments'}
+[INFO] 2021-07-22 08:03:24,820 : select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[INFO] 2021-07-22 08:03:24,820 : {'name': 'user_role'}
+[INFO] 2021-07-22 08:03:24,822 : select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[INFO] 2021-07-22 08:03:24,822 : {'name': 'user'}
+[INFO] 2021-07-22 08:03:24,823 : select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[INFO] 2021-07-22 08:03:24,824 : {'name': 'visualisation'}
+[INFO] 2021-07-22 08:03:24,825 : select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[INFO] 2021-07-22 08:03:24,825 : {'name': 'validation_status'}
+[INFO] 2021-07-22 08:03:24,826 : select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[INFO] 2021-07-22 08:03:24,827 : {'name': 'document'}
+[INFO] 2021-07-22 08:03:24,828 : select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[INFO] 2021-07-22 08:03:24,828 : {'name': 'guided_tour'}
+[INFO] 2021-07-22 08:03:24,829 : select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[INFO] 2021-07-22 08:03:24,830 : {'name': 'document_guided_tour'}
+[INFO] 2021-07-22 08:03:24,831 : select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[INFO] 2021-07-22 08:03:24,831 : {'name': 'versions'}
+[INFO] 2021-07-22 08:03:24,832 : select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[INFO] 2021-07-22 08:03:24,832 : {'name': 'document_user'}
+[INFO] 2021-07-22 08:03:24,833 : select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where pg_catalog.pg_table_is_visible(c.oid) and relname=%(name)s
+[INFO] 2021-07-22 08:03:24,833 : {'name': 'link_city_object'}
+[INFO] 2021-07-22 08:03:24,834 : 
+            SELECT EXISTS (
+                SELECT * FROM pg_catalog.pg_type t
+                WHERE t.typname = %(typname)s
+                AND pg_type_is_visible(t.oid)
+                )
+                
+[INFO] 2021-07-22 08:03:24,835 : {'typname': 'status'}
+[INFO] 2021-07-22 08:03:24,850 : BEGIN (implicit)
+[INFO] 2021-07-22 08:03:24,852 : SELECT user_role.id AS user_role_id, user_role.label AS user_role_label 
+FROM user_role 
+WHERE user_role.label = %(label_1)s
+[INFO] 2021-07-22 08:03:24,852 : {'label_1': 'admin'}
+[INFO] 2021-07-22 08:03:24,855 : COMMIT
+[INFO] 2021-07-22 08:03:24,857 : BEGIN (implicit)
+[INFO] 2021-07-22 08:03:24,857 : SELECT user_role.id AS user_role_id, user_role.label AS user_role_label 
+FROM user_role 
+WHERE user_role.label = %(label_1)s
+[INFO] 2021-07-22 08:03:24,858 : {'label_1': 'moderator'}
+[INFO] 2021-07-22 08:03:24,859 : COMMIT
+[INFO] 2021-07-22 08:03:24,860 : BEGIN (implicit)
+[INFO] 2021-07-22 08:03:24,861 : SELECT user_role.id AS user_role_id, user_role.label AS user_role_label 
+FROM user_role 
+WHERE user_role.label = %(label_1)s
+[INFO] 2021-07-22 08:03:24,862 : {'label_1': 'softModerator'}
+[INFO] 2021-07-22 08:03:24,863 : COMMIT
+[INFO] 2021-07-22 08:03:24,864 : BEGIN (implicit)
+[INFO] 2021-07-22 08:03:24,864 : SELECT user_role.id AS user_role_id, user_role.label AS user_role_label 
+FROM user_role 
+WHERE user_role.label = %(label_1)s
+[INFO] 2021-07-22 08:03:24,865 : {'label_1': 'contributor'}
+[INFO] 2021-07-22 08:03:24,866 : COMMIT
+[INFO] 2021-07-22 08:03:24,867 : BEGIN (implicit)
+[INFO] 2021-07-22 08:03:24,868 : SELECT "user".id AS user_id, "user".username AS user_username, "user".password AS user_password, "user"."firstName" AS "user_firstName", "user"."lastName" AS "user_lastName", "user".email AS user_email, "user".role_id AS user_role_id 
+FROM "user"
+[INFO] 2021-07-22 08:03:24,869 : {}
+[INFO] 2021-07-22 08:03:24,873 : COMMIT
