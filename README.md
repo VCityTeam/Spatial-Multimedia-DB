@@ -1,8 +1,8 @@
-# Description of the API Enhanced City application
+# Description of the Spatial Multimedia DB application
 
 ## Introduction
 
-The goal of the API **Enhanced City** is to handle, and serve through 
+The goal of the Spatial Multimedia DB is to handle, and serve through 
 [web services](https://en.wikipedia.org/wiki/Web_service), various types
 of city related data in the context of 
 [UD-SV (Urban Data Services and Vizualisation)](https://github.com/VCityTeam/UD-SV).
@@ -18,7 +18,7 @@ Such resources are typically used by the front-end [UD-Viz web client](https://g
 
 Thus application provides all the expected 
 [CRUD operations](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) on the backend side.
-API Enhanced City is developed in python and is based on an **MVC** (Model, View, Controller) architecture.
+Spatial Multimedia DB is developed in python and is based on an **MVC** (Model, View, Controller) architecture.
 Persistance of objects to the DataBase is obtained through the usage of the [sqlalchemy library](https://www.sqlalchemy.org) [**ORM**](https://en.wikipedia.org/wiki/Object-relational_mapping).
 In order to wrap the (CRUD) service within an HTTP protocol (to deal with the requests and send responses to the client), the API uses the [flask library](http://flask.pocoo.org/docs/1.0/).
 
@@ -47,13 +47,13 @@ To renegerate it, follow these instruction:
   * Connect to the database in pycharm:
     * Open the database tab from the right side on pycharm
     * Click on the *+*, choose *Data Source*, *PostgreSQL*
-    * In the SPATIAL_MULTIMEDIA_DB_HOST, put the IP address of your docker (you can find it by running the following command in a terminal: `docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' enhanced_city_db`)
+    * In the SPATIAL_MULTIMEDIA_DB_HOST, put the IP address of your docker (you can find it by running the following command in a terminal: `docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' Spatial-Multimedia-postgres`)
     *  The other information match the values in the `.env` file (SPATIAL_MULTIMEDIA_DB_USER = postgres, SPATIAL_MULTIMEDIA_DB_PASSWORD = password, SPATIAL_MULTIMEDIA_DB_PORT = 5432 and Database = extendedDoc)
     * Hit Test Connection and then Ok
    * Expand: the database imported in pycharm, extendedDoc and schemas
    * Right click on `public`, choose `Diagrams` and `show visualization`.
 
-The sources of the API Enhanced City application can be found on the [UDV sever git repository](.).
+The sources of the Spatial Multimedia DB application can be found on the [UDV sever git repository](.).
 
 ## MVC Architecture
 
@@ -71,7 +71,7 @@ The controller is used to interact with the entities. It can realize all the CRU
 
 ### View
 
-The view of API Enhanced City consist of the definition of the different routes to access the resources. A route is simply a path specified in the URL to request specific resources or perform actions. For example, the request `GET <server-url>/document` returns a JSON list of all documents. The API is designed by following the [REST architectural style](https://en.wikipedia.org/wiki/Representational_state_transfer) and you can find the documentations for all routes in the [documentation file](./doc/API-Documentation.md).
+The view of Spatial Multimedia DB City consist of the definition of the different routes to access the resources. A route is simply a path specified in the URL to request specific resources or perform actions. For example, the request `GET <server-url>/document` returns a JSON list of all documents. The API is designed by following the [REST architectural style](https://en.wikipedia.org/wiki/Representational_state_transfer) and you can find the documentations for all routes in the [documentation file](./doc/API-Documentation.md).
 
 The view is defined in the [api](./api/) folder, and the route themselves are all located in the [web_api.py](./api/web_api.py) file.
 

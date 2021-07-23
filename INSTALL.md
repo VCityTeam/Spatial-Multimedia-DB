@@ -1,9 +1,9 @@
 ## Clone the repository (holding this directory)
 You need to clone this repository with one of the following commands:
- - as a user: `git clone https://github.com/MEPP-team/UD-Serv.git`
- - as a developer, that is if you have an ssh key: `git clone git@github.com:MEPP-team/UD-Serv.git`
+ - as a user: `git clone https://github.com/VCityTeam/Spatial-Multimedia-DB.git`
+ - as a developer, that is if you have an ssh key: `git clone git@github.com:VCityTeam/Spatial-Multimedia-DB.git`
 
-Then you need to connect to directory **API_Enhanced_City**: `cd UD-Serv/API_Enhanced_City`
+Then you need to open the cloned repository to directory **Spatial-Multimedia-DB**
 
 *Note: In windows `/` is replaced by `\`*
 
@@ -23,7 +23,7 @@ SPATIAL_MULTIMEDIA_DB_NAME=extendeddoc
 > *Note: the .env that is commited should not be modified because it is used by travis for CI.*  
 > Please make sure when you commit your files that you do not commit the `.env` file. If you see that `.env` appears in your changelog (in the `git status` command for example), you can prevent it from being commited using the command `git update-index --assume-unchanged .env`.
 
-> Note: the default password for the administrator account (the one you must use to SignIn as `admin` within the web interface in order to declare users) is [not well documented](https://github.com/MEPP-team/UD-Serv/issues/89)... By default and in despair try using `password`.  
+> Note: the default password for the administrator account (the one you must use to SignIn as `admin` within the web interface in order to declare users) is `password`.  
 
 Then run the following commands:
 ````
@@ -34,7 +34,7 @@ sudo docker-compose build
 sudo docker-compose up
 ````
 In order to test that the server is indeed running, open `http://localhost:1525/` and assert that you get some response.
-Note that the `1525` port number is the one configured (mapped for the `app` service) in the [docker-compose.yml](docker-compose.yml#L19) configuration file.
+Note that the `1525` port number is the one configured (mapped for the `app` service) in the [docker-compose.yml](docker-compose.yml) configuration file.
 
 ### Troubleshooting
  - **Problem with docker-compose**<br>
@@ -159,10 +159,10 @@ To verify everything works fine, you can execute the tests files, located in the
 [**test**](test)
 
 By default, python will not find the local packages (such as **test** or **api**).
-You thus need to add the location of **API_Enhanced_City** to the environment variable **PYTHONPATH** :
+You thus need to add the location of **Spatial-Multimedia-DB** to the environment variable **PYTHONPATH** :
  - On **Linux**: `export PYTHONPATH="."`
  - On **Windows**: `set PYTHONPATH=.`
-where the `.` (current directory) corresponds to the location of **API_Enhanced_City** and can be replaced
+where the `.` (current directory) corresponds to the location of **Spatial-Multimedia-DB** and can be replaced
 by any path to this directory.
 
 Then you can run any test file located in the **test** directory, for instance:

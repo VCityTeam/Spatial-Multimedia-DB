@@ -3,7 +3,7 @@ services:
   postgres:
     restart: unless-stopped
     image: postgres:10
-    container_name: enhanced_city_db
+    container_name: Spatial-Multimedia-postgres
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -17,7 +17,7 @@ services:
     command: -p ${POSTGRES_PORT}
 
   app:
-    container_name: enhanced_city_api
+    container_name: Spatial-Multimedia-DB
     build: .
     ports:
       - ${SPATIAL_MULTIMEDIA_DB_PORT}:5000
