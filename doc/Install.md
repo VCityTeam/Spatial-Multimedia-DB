@@ -8,7 +8,7 @@ Then you need to open the cloned repository to directory **Spatial-Multimedia-DB
 *Note: In windows `/` is replaced by `\`*
 
 ## Install using docker
-Modify the [.env](.env) file to match this configuration:
+Modify the [.env](../.env) file to match this configuration:
 
 ````
 # database configuration
@@ -34,7 +34,7 @@ sudo docker-compose build
 sudo docker-compose up
 ````
 In order to test that the server is indeed running, open `http://localhost:1525/` and assert that you get some response.
-Note that the `1525` port number is the one configured (mapped for the `app` service) in the [docker-compose.yml](docker-compose.yml) configuration file.
+Note that the `1525` port number is the one configured (mapped for the `app` service) in the [docker-compose.yml](../docker-compose.yml) configuration file.
 
 ### Troubleshooting
  - **Problem with docker-compose**<br>
@@ -109,9 +109,10 @@ Enter in the virtual environment,
 
 To quit the virtual environment, just type:   `deactivate`
 
-***Warning**: Unless explicitly, in the following you need to be in the **virtual environment**.*
+**Warning**: Unless explicitly, in the following you need to be in the **virtual environment**.
 
 ### Install packages
+
 Required packages for the application:
 - [**psycopg2**](http://initd.org/psycopg/)
 - [**Sqlalchemy**](https://www.sqlalchemy.org/)
@@ -135,7 +136,7 @@ You need to create a postgres database for instance on linux with
 It is a software like [PhpMyAdmin](https://www.phpmyadmin.net/) but for PostgreSQL database.
 By default, it is installed with PostgreSQL: `Program Files (x86)\PostgreSQL\X.X\pgAdminX\bin\pgAdminX.exe`*
 
-Then modify the [**.env**](.env) to reflect your configuration.
+Then modify the [**.env**](../.env) to reflect your configuration.
 If you have created a new database as below, no change is needed but verify anyway everything are correct
 
 ```
@@ -156,7 +157,7 @@ and in `Program Files (x86)\PostgreSQL\X.X\data\postgresql.conf` on Windows
 ### Tests
 
 To verify everything works fine, you can execute the tests files, located in the folder
-[**test**](test)
+[**test**](../test/)
 
 By default, python will not find the local packages (such as **test** or **api**).
 You thus need to add the location of **Spatial-Multimedia-DB** to the environment variable **PYTHONPATH** :

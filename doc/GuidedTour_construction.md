@@ -1,7 +1,7 @@
 # Guided Tour Construction
 ⚠️⚠️ YOU NEED TO HAVE EXTENDED DOCUMENT BEFORE TO CREATE A GUIDED TOUR ⚠️⚠️
 ## Setup
- * First of all you need to launch [Spatial Multimedia database](../INSTALL.md)
+ * First of all you need to launch [Spatial Multimedia database](Install.md)
  * Install pgadmin on your computer
    ````
    sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'

@@ -39,8 +39,8 @@ def index():
           Welcome on API-ExtendedDocument
         </h1>
         <div style="text-align:center">
-          <p> This application was developed by MEPP team </p>
-          <a href="https://github.com/MEPP-team/UD-Serv/tree/master/API_Extended_Document"
+          <p> This application was developed by VCityTeam </p>
+          <a href="https://github.com/VCityTeam/Spatial-Multimedia-DB.git"
              style="text-align:center"> Find us on Github! </a>
         </div>
       </body>

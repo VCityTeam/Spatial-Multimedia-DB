@@ -2,7 +2,7 @@ swagger: "2.0"
 info:
   description: API used to manage the extended documents in UDV Server.
   version: 1.0.0
-  title: UD-Serv API$
+  title: Spatial-Multimedia-DB API$
 host: localhost:1525
 tags:
 - name: Users

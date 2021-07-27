@@ -48,18 +48,18 @@ Now that the database is launched, you should be able to query it by connecting 
 
 In the right toolbar of PyCharm editor, you should see a "Database" menu. Click on it to open the Database window. Currently, no data source is configured.
 
-![Database window](doc/img/pycharm-docker/db_empty.png)
+![Database window](img/pycharm-docker/db_empty.png)
 
 
 The first step is to configure a new data source. Click on the "+" in the top-left of the Database window and choose "Data Source > PostgreSQL". It will open a configuration window. Fill the fields as in the screenshot below.
 
-![Configuration window](doc/img/pycharm-docker/db_cfg.png)
+![Configuration window](img/pycharm-docker/db_cfg.png)
 
 You can now test the connection. Fill in the database password (which is normally "password", see the .env file) and it should successfully connect. You should be able to see the data source in the Database window, and if you expand the "database" folder you should see an "extendedDoc" database. If that's not the case, just click on the number right to the data source an check the "extendedDoc" checkbox.
 
-![Database window](doc/img/pycharm-docker/db_view1.png)
+![Database window](img/pycharm-docker/db_view1.png)
 
-![Database window](doc/img/pycharm-docker/db_view2.png)
+![Database window](img/pycharm-docker/db_view2.png)
 
 You can now view the content of each table by double-clicking on them. If that's the first time you run the database, every table should be empty, but they will be filled with data when we'll run the server.
 
@@ -87,13 +87,13 @@ $ docker build -t {image-name} .
 
 Now we need to create a PyCharm interpreter using that image. Type `Ctrl-Alt-S` to open the settings, and go to "Project: [...] > Project Interpreter". Click on the cog icon in the right of the window and select "Add". It will open a configuration window to setup our new interpreter. Select the "Docker" option and fill the fields. The server should be automatically detected, otherwise it could be that you do not have the rights as a user to access the Docker daemon (see the "User permission" section of this file). Select your docker image that you juste created, and leave the last field as is.
 
-![Server Interpreter Configuration](doc/img/pycharm-docker/server_int_cfg.png)
+![Server Interpreter Configuration](img/pycharm-docker/server_int_cfg.png)
 
 ### Run/Debug configuration
 
 The last step is to configure a main file to run on the server. To do that, we need to go in the `api/web_api.py` file and go to the bottom. Left to the main section of the code, PyCharm displays a green triangle to run the code from here. If you click on it, it will create a run configuration that we can see in the upper left section of the window.
 
-![Server Main Entry](doc/img/pycharm-docker/server_main.png)
+![Server Main Entry](img/pycharm-docker/server_main.png)
 
 You can now click on the created configuration and select "Edit Configuration". We need to change some settings here :
 
@@ -101,9 +101,9 @@ You can now click on the created configuration and select "Edit Configuration". 
 2. The working directory should be the `API_Extended_Document` folder.
 3. We should configure the Docker container. You can click on the folder icon right to the "Docker container settings" field to access a configuration panel. We need to set the network to {network-name}, publish the 5000 port and configure add a volume binding. You can see an example configuration below.
 
-![Main Configuration](doc/img/pycharm-docker/server_main_cfg.png)
+![Main Configuration](img/pycharm-docker/server_main_cfg.png)
 
-![Main Configuration](doc/img/pycharm-docker/server_main_cfg_container.png)
+![Main Configuration](img/pycharm-docker/server_main_cfg_container.png)
 
 > In this example, my {network-name} is "my-net".
 
@@ -126,6 +126,6 @@ We must create a test configuration, like we made a run/debug configuration for 
 
 The configuration window should look like this :
 
-![Test Configuration](doc/img/pycharm-docker/server_tests.png)
+![Test Configuration](img/pycharm-docker/server_tests.png)
 
 And that's done ! You should be able to run PyTest without problems now. Just hit the green arrow and the tests will run properly.

@@ -1,10 +1,19 @@
-upload
+# Python by-products:
 .pytest_cache
-.idea
-venv
-postgres-data
-log/*
 **/__pycache__/*
+venv
+
+# Run time related:
+postgres-data
 postgres-data/*
-upload/*
+log/*
 *.log
+upload
+upload/*
+
+# Developing tools
+node_modules/
+package-lock.json
+
+# IDE related
+.idea
