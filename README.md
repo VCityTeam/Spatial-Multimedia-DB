@@ -49,3 +49,4 @@ might not feel straightforward, you refer to this [decorators tutorial](doc/Deco
 - **Diagram**
 The diagram were mostly made with [Visual Paradigm](https://visual-paradigm.com/).
 For further information on how you can modify them [refer to this Class diagram](doc/Class-diagrams.md).
+
