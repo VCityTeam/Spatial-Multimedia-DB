@@ -11,6 +11,8 @@ install:
 before_script:
   - psql -c 'create database extendeddoc;' -U postgres
   - psql -c '\l' -U postgres
+  # Travis context requires a specific database configuration
+  - cp .env.travis .env
 
 jobs:
   include:
