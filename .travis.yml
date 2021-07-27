@@ -8,12 +8,12 @@ install:
   - export PYTHONPATH=$PYTHONPATH:.
   - pip install -r requirements.txt
 
+before_script:
+  - psql -c 'create database extendeddoc;' -U postgres
+  - psql -c '\l' -U postgres
+
 jobs:
   include:
-    - stage: Create a (postgres) database
-      script:
-        - psql -c 'create database extendeddoc;' -U postgres
-        - psql -c '\l' -U postgres
     - stage: Running tests
       script:
         - pytest -s
