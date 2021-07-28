@@ -131,7 +131,7 @@ def use_authentication(required=True):
                 try:
                     bearer = request.headers["Authorization"]
                     encoded_jwt = re.search('Bearer (.*)', bearer).group(1)
-                    decoded_jwt = jwt.decode(encoded_jwt, VarConfig.get()['SPATIAL_MULTIMEDIA_DB_PASSWORD'],
+                    decoded_jwt = jwt.decode(encoded_jwt, VarConfig.get()['SPATIAL_MULTIMEDIA_DB_ADMIN_PASSWORD'],
                                              algorithms=['HS256'])
                     if decoded_jwt is None:
                         raise Unauthorized

@@ -26,7 +26,7 @@ To renegerate it, follow these instruction:
     * Open the database tab from the right side on pycharm
     * Click on the *+*, choose *Data Source*, *PostgreSQL*
     * In the SPATIAL_MULTIMEDIA_DB_HOST, put the IP address of your docker (you can find it by running the following command in a terminal: `docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' Spatial-Multimedia-postgres`)
-    *  The other information match the values in the `.env` file (SPATIAL_MULTIMEDIA_DB_USER = postgres, SPATIAL_MULTIMEDIA_DB_PASSWORD = password, SPATIAL_MULTIMEDIA_DB_PORT = 5432 and Database = extendedDoc)
+    *  The other information match the values in the `.env` file (SPATIAL_MULTIMEDIA_DB_USER = postgres, SPATIAL_MULTIMEDIA_DB_ADMIN_PASSWORD = password, SPATIAL_MULTIMEDIA_DB_PORT = 5432 and Database = extendedDoc)
     * Hit Test Connection and then Ok
    * Expand: the database imported in pycharm, extendedDoc and schemas
    * Right click on `public`, choose `Diagrams` and `show visualization`.
@@ -101,7 +101,7 @@ The .env file makes the following definitions :
 ```
 SPATIAL_MULTIMEDIA_ORDBMS=<type of DB>
 SPATIAL_MULTIMEDIA_DB_USER=<username to use the DB>
-SPATIAL_MULTIMEDIA_DB_PASSWORD=<password of the user>
+SPATIAL_MULTIMEDIA_DB_ADMIN_PASSWORD=<password of the user>
 SPATIAL_MULTIMEDIA_DB_HOST=<server hosting the DB>
 SPATIAL_MULTIMEDIA_DB_PORT=<port of the server>
 SPATIAL_MULTIMEDIA_DB_NAME=<name of the database>

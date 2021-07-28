@@ -86,7 +86,7 @@ class UserController:
                 }
                 return {
                     "token": jwt.encode(
-                        payload, VarConfig.get()['SPATIAL_MULTIMEDIA_DB_PASSWORD'],
+                        payload, VarConfig.get()['SPATIAL_MULTIMEDIA_DB_ADMIN_PASSWORD'],
                         algorithm='HS256').decode('utf-8')
                 }
             else:
