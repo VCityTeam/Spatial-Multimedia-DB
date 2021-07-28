@@ -34,7 +34,6 @@ sudo docker-compose build
 sudo docker-compose up
 ````
 In order to test that the server is indeed running, open `http://localhost:1525/` and assert that you get some response.
-Note that the `1525` port number is the one configured (mapped for the `app` service) in the [docker-compose.yml](../docker-compose.yml) configuration file.
 
 ### Troubleshooting
  - **Problem with docker-compose**<br>
