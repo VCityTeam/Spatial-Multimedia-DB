@@ -15,10 +15,11 @@ class VarConfig:
                     var, value = line.replace('\n', '').split('=')
                     config[var] = value
 
-            # if the environment variable "EXTENDED_DOC_PASSWORD" exists
-            if os.environ.get("EXTENDED_DOC_PASSWORD"):
-                config['SPATIAL_MULTIMEDIA_DB_ADMIN_PASSWORD'] = os.environ["EXTENDED_DOC_PASSWORD"]
-
+            for var in config:
+                print(var)
+                if os.environ.get(var):
+                    config[var] = os.environ.get(var)
+    
             return config
 
 
