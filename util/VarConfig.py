@@ -16,7 +16,6 @@ class VarConfig:
                     config[var] = value
 
             for var in config:
-                print(var)
                 if os.environ.get(var):
                     config[var] = os.environ.get(var)
     
