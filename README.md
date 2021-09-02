@@ -21,7 +21,7 @@ The service provided by the Spatial Multimedia DB is typically used by the
 ## Installation
 
 In order to install and run the application (UNIX or Windows), refer to the installation
-notes in [doc/Install.md]](doc/Install.md).
+notes in [doc/Install.md](doc/Install.md).
 
 ## Further information
 
