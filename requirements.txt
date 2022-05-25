@@ -10,5 +10,5 @@ six==1.12.0
 SQLAlchemy==1.3.3
 Werkzeug==0.15.3
 passlib==1.7.1
-PyJWT==1.7.1
+PyJWT==2.4.0
 pytest==4.4.1
