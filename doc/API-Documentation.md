@@ -20,7 +20,7 @@ interchangeable.
 
 You can easily read the file by going into the [Swagger Editor](https://editor.swagger.io/)
 and importing the file e.g. with docker (refer [here](https://hub.docker.com/r/swaggerapi/swagger-editor/)
-and [surprisingly there](https://www.npmjs.com/package/swagger-editor))
+and [surprisingly there in the Docker section](https://www.npmjs.com/package/swagger-editor))
 
 ```bash
 cd doc/OpenAPI2
