@@ -19,7 +19,16 @@ interchangeable.
 ## Accessing the file
 
 You can easily read the file by going into the [Swagger Editor](https://editor.swagger.io/)
-and importing the file. You can modify it using the YAML editor.
+and importing the file e.g. with
+
+```bash
+cd doc/OpenAPI2
+docker run -d -p 8080:8080 -v $(pwd):/tmp -e SWAGGER_FILE=/tmp/swagger.json swaggerapi/swagger-editor
+```
+
+and web-browse `http://localhost:8080`.
+
+You can then modify the `swagger.json` by using the YAML editor.
 
 ![Swagger Editor](img/api/swagger_editor.png)
 
