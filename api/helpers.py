@@ -122,16 +122,12 @@ def format_response(
     return new_function
 
 
-def use_authentication(realm, server_url, client_id, client_secret):
+def use_authentication(required=True):
     """
     Decorator used to specify that a route needs Keycloak authentication. This
     decorator should be placed after the `app.route` decorator of Flask.
     In case authentication fails (invalid or expired token), this decorator
     redirects to Keycloak login page.
-    :param realm:
-    :param server_url:
-    :param client_id:
-    :param client_secret
     """
 
     def decorator_protect(func):
