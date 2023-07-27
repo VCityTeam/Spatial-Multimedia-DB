@@ -13,7 +13,7 @@ def get_keycloak_openid():
             server_url=config["KC_SERVER_URL"],
             client_id=config["KC_CLIENT_ID"],
             realm_name=config["KC_REALM"],
-            client_secret=config["KC_CLIENT_SECRET"],
+            client_secret_key=config["KC_CLIENT_SECRET"],
         )
 
     return get_keycloak_openid.openid

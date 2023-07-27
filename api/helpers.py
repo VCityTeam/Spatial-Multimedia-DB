@@ -9,6 +9,7 @@ from flask import jsonify, request, redirect
 import sqlalchemy.exc
 import sqlalchemy.orm
 from functools import wraps
+import jwt
 
 
 class Response:
@@ -140,8 +141,18 @@ def use_authentication(required=True):
                 "Bearer "
             )[-1]
 
+            print("received: " + access_token)
+
+            public_key = "" # TODO: get public key from keycloak
+
+            decoded_token = jwt.decode(access_token, public_key, audience="account")
+
+            print(decoded_token)
+
             # Validate the access token
-            token_info = keycloak_openid.introspect(access_token)
+            token_info = keycloak_openid.introspect(decoded_token)
+
+            print(token_info)
 
             if not token_info["active"]:
                 # Redirect to the Keycloak login page if the token is invalid or expired

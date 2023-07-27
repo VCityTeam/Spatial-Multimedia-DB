@@ -48,50 +48,50 @@ def index():
     '''
 
 
-@app.route('/login', methods=['POST'])
-@format_response
-def login():
-    token = UserController.login(
-            {key: request.form.get(key) for key in
-             request.form.keys()})
-    return ResponseOK(token)
+# @app.route('/login', methods=['POST'])
+# @format_response
+# def login():
+#     token = UserController.login(
+#             {key: request.form.get(key) for key in
+#              request.form.keys()})
+#     return ResponseOK(token)
 
 
 # ---- USERS -------------------------------------------------------------------
 
 
-@app.route('/user', methods=['POST'])
-@format_response
-def create_user():
-    created_user = UserController.create_user(
-            {key: request.form.get(key) for key in
-             request.form.keys()})
-    return ResponseCreated(created_user)
+# @app.route('/user', methods=['POST'])
+# @format_response
+# def create_user():
+#     created_user = UserController.create_user(
+#             {key: request.form.get(key) for key in
+#              request.form.keys()})
+#     return ResponseCreated(created_user)
 
 
-@app.route('/user/me', methods=['GET'])
-@format_response
-@use_authentication()
-def get_connected_user(auth_info):
-    user = UserController.get_user_by_id(auth_info['user_id'])
-    return ResponseOK(user)
+# @app.route('/user/me', methods=['GET'])
+# @format_response
+# @use_authentication()
+# def get_connected_user(auth_info):
+#     user = UserController.get_user_by_id(auth_info['user_id'])
+#     return ResponseOK(user)
 
 
-@app.route('/user/<int:user_id>', methods=['GET'])
-@format_response
-def get_user(user_id):
-    user = UserController.get_user_by_id(user_id)
-    return ResponseOK(user)
+# @app.route('/user/<int:user_id>', methods=['GET'])
+# @format_response
+# def get_user(user_id):
+#     user = UserController.get_user_by_id(user_id)
+#     return ResponseOK(user)
 
 
-@app.route('/user/grant', methods=['POST'])
-@format_response
-@use_authentication()
-def add_privileged_user(auth_info):
-    user = UserController.create_privileged_user({
-            key: request.form.get(key) for key in
-            request.form.keys()}, auth_info)
-    return ResponseOK(user)
+# @app.route('/user/grant', methods=['POST'])
+# @format_response
+# @use_authentication()
+# def add_privileged_user(auth_info):
+#     user = UserController.create_privileged_user({
+#             key: request.form.get(key) for key in
+#             request.form.keys()}, auth_info)
+#     return ResponseOK(user)
 
 
 # ---- DOCUMENTS ---------------------------------------------------------------
